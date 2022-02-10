@@ -4,7 +4,7 @@
 Entertainment and the arts
 
 ## Topic
-Turn photos into a catoon avatar
+Turn photos into a cartoon avatar
 
 ## Posible steps
 1. object detection & segemention (edge detection)
