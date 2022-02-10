@@ -1,14 +1,16 @@
 # photo2avatar
 
-## Theme: Entertainment and the arts
+## Theme
+Entertainment and the arts
 
-## Topic: Turn photos into a catoon avatar
+## Topic
+Turn photos into a catoon avatar
 
-## Posible steps:
+## Posible steps
 1. object detection & segemention (edge detection)
 2. discover facial features
 3. sketch
 4. coloraize
 
-## Possible models:
+## Possible models
 VGG/Gan
