@@ -1,3 +1,14 @@
+'''
+sketchKeras Implementation in pytorch.
+The weights are converted to torch tensor from the original release.
+Thanks to higumax (https://github.com/higumax)
+[original] : https://github.com/lllyasviel/sketchKeras
+[Code] : https://github.com/higumax/sketchKeras-pytorch
+[License] https://github.com/higumax/sketchKeras-pytorch/blob/master/LICENSE
+[original weights] : https://github.com/lllyasviel/sketchKeras/releases/download/0.1/mod.h5
+[pytorch weights] : https://drive.google.com/file/d/1Zo88NmWoAitO7DnyBrRhKXPcHyMAZS97/view?usp=sharing
+'''
+
 import torch
 import torch.nn as nn
 
