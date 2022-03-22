@@ -2,7 +2,7 @@ import argparse
 import numpy as np
 import torch
 import cv2
-from .model import SketchKeras
+from .sketch import SketchKeras
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = SketchKeras().to(device)
