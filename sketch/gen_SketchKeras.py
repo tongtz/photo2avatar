@@ -6,7 +6,7 @@ from .sketch import SketchKeras
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = SketchKeras().to(device)
-model.load_state_dict(torch.load('/usr/src/sketchKeras/weights/model.pth'))
+model.load_state_dict(torch.load('/sketch/model.pth'))
 
 def preprocess(img):
     h, w, c = img.shape
