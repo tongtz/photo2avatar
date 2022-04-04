@@ -14,7 +14,7 @@ parser.add_argument('--save_path', type=str, help='save folder path')
 args = parser.parse_args()
 os.makedirs(args.save_path, exist_ok=True)
 
-pre = Preprocess()
+pre = preprocess.Preprocess()
 
 for idx, img_name in enumerate(tqdm(os.listdir(args.data_path))):
     img = cv2.cvtColor(cv2.imread(os.path.join(args.data_path, img_name)), cv2.COLOR_BGR2RGB)
