@@ -75,7 +75,7 @@ parser.add_argument('--decay_epoch',default=50,             help='decay epoch')
 
 ### Resume train 
 
-Download the [checkpoint](https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0) and place it into a checkpoint at the root folder: 
+Download the pretrined model [checkpoint](https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0) and place it into the checkpoint folder.
 
 The information about the model are as following:
 
