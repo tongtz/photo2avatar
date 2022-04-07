@@ -11,7 +11,7 @@ Novelty:
 
 ## 3. How to run?
 
-### Pip
+### Setup
 
 ```bash
 pip3 install --upgrade pip
