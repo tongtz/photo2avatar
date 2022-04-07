@@ -51,7 +51,7 @@ The datasets you decide to use should be put into the dataset folder of the proj
 
 ### Train
 
-```bash
+```python
 python main.py --dataset YOUR_DATASET_NAME
 ```
 
@@ -74,7 +74,9 @@ parser.add_argument('--decay_epoch',default=50,             help='decay epoch')
 
 ### Resume train 
 
+Download the checkpointand place it into a checkpoint at the root folder: https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0
 
+The information about the model are as following:
 
 ```
 ##### Information #####
@@ -104,7 +106,7 @@ parser.add_argument('--decay_epoch',default=50,             help='decay epoch')
 
 ### Test
 
-```bash
+```python
 python main.py --dataset YOUR_DATASET_NAME --phase test
 ```
 
