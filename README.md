@@ -122,5 +122,6 @@ Run and execute the streamlit app for applications demo: ```streamlit run app.py
 * For the errors ```No module named 'tensorflow.contrib'```, it is because version 2.0 of Tensorflow isn't supported, you might need to ```pip uninstall tensorflow==2.8.0``` and then ```pip install tensorflow-gpu==1.14```
     
 ## 5. Code and Paper References
-U-GAT-IT: Unsupervised Generative Attentional Networks with Adaptive Layer-Instance Normalization for Image-to-Image Translation [Paper](https://arxiv.org/abs/1907.10830) | [Code](https://github.com/taki0112/UGATIT)
+* U-GAT-IT: Unsupervised Generative Attentional Networks with Adaptive Layer-Instance Normalization for Image-to-Image Translation [Paper](https://arxiv.org/abs/1907.10830) | [Code](https://github.com/taki0112/UGATIT)
+* Minivision's photo-to-cartoon translation project [Code](https://github.com/minivision-ai/photo2cartoon/blob/master/README_EN.md)
 
