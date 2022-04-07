@@ -6,7 +6,8 @@ Objective: Turn photos into a cartoon avatar
 Novelty:
 
 
-## 2. GitHub Framework
+## 2. Model Structure
+
 
 ## 3. How to run?
 
@@ -114,7 +115,7 @@ python main.py --dataset YOUR_DATASET_NAME --phase test
 Open and run the Jupyter Notebook: ```Test.ipynb```
 
 ### Deployment application
-Run and execute the streamlit app for applications demo:```streamlit run app.py```
+Run and execute the streamlit app for applications demo: ```streamlit run app.py```
 
 ## 4. Tips
 * For the errors ```No module named 'tensorflow.contrib'```, it is because version 2.0 of Tensorflow isn't supported, you might need to ```pip uninstall tensorflow==2.8.0``` and then ```pip install tensorflow-gpu==1.14```
