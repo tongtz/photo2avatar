@@ -4,6 +4,7 @@ Objective: Turn photos into a cartoon avatar
 
 ## 1. Project Description
 Novelty:
+Limit & Futher Work: 
 
 
 ## 2. Model Structure
@@ -23,7 +24,7 @@ pip3 install -r requirements.txt
 * Selfie Dataset - https://www.crcv.ucf.edu/data/Selfie
 * Anime Dataset - https://www.gwern.net/Danbooru2021
 
-* The dataset sample used to develop the pretrained model is: https://drive.google.com/file/d/1xOWj1UVgp6NKMT3HbPhBbtq2A4EDkghF/view
+* You can also download a dataset [sample](https://drive.google.com/file/d/1xOWj1UVgp6NKMT3HbPhBbtq2A4EDkghF/view).
 
 
 ### Dataset Structure
