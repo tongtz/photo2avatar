@@ -20,11 +20,10 @@ pip3 install -r requirements.txt
 
 ### Dataset
 
-Selfie Dataset - https://www.crcv.ucf.edu/data/Selfie
-Anime Dataset - https://www.gwern.net/Danbooru2018
+* Selfie Dataset - https://www.crcv.ucf.edu/data/Selfie
+* Anime Dataset - https://www.gwern.net/Danbooru2021
 
-The dataset sample used to develop the pretrained model is: 
-https://drive.google.com/file/d/1xOWj1UVgp6NKMT3HbPhBbtq2A4EDkghF/view
+* The dataset sample used to develop the pretrained model is: https://drive.google.com/file/d/1xOWj1UVgp6NKMT3HbPhBbtq2A4EDkghF/view
 
 
 ### Dataset Structure
