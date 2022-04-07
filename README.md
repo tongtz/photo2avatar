@@ -20,14 +20,15 @@ pip3 install -r requirements.txt
 
 ### Dataset
 
-The dataset used to develop the pretrained model is 
-https://drive.google.com/file/d/1xOWj1UVgp6NKMT3HbPhBbtq2A4EDkghF/view
-
 Selfie Dataset - https://www.crcv.ucf.edu/data/Selfie
 Anime Dataset - https://www.gwern.net/Danbooru2018
 
+The dataset sample used to develop the pretrained model is: 
+https://drive.google.com/file/d/1xOWj1UVgp6NKMT3HbPhBbtq2A4EDkghF/view
+
+
 ### Dataset Structure
-The datasets you decide to use should be put into the dataset folder of the project and follow the structure seen below
+The datasets you decide to use should be put into the dataset folder of the project and follow the below structure: 
 
 ```bash
 ├── dataset
@@ -75,7 +76,7 @@ parser.add_argument('--decay_epoch',default=50,             help='decay epoch')
 
 ### Resume train 
 
-Download the checkpointand place it into a checkpoint at the root folder: https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0
+Download the [checkpoint](https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0) and place it into a checkpoint at the root folder: 
 
 The information about the model are as following:
 
@@ -121,5 +122,5 @@ Run and execute the streamlit app for applications demo: ```streamlit run app.py
 * For the errors ```No module named 'tensorflow.contrib'```, it is because version 2.0 of Tensorflow isn't supported, you might need to ```pip uninstall tensorflow==2.8.0``` and then ```pip install tensorflow-gpu==1.14```
     
 ## 5. Code and Paper References
-U-GAT-IT: Unsupervised Generative Attentional Networks with Adaptive Layer-Instance Normalization for Image-to-Image Translation [Paper][Code]
+U-GAT-IT: Unsupervised Generative Attentional Networks with Adaptive Layer-Instance Normalization for Image-to-Image Translation [Paper](https://arxiv.org/abs/1907.10830) | [Code](https://github.com/taki0112/UGATIT)
 
