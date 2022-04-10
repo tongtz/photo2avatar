@@ -21,7 +21,6 @@ uploaded_file = st.file_uploader("Choose an image...")
 
 @st.cache
 def download_checkpoint():
-os.chdir(r'C:\Folder')
     
     path = './checkpoint/temp'
 	
