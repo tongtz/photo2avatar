@@ -29,9 +29,8 @@ def download_checkpoint():
         
         with st.spinner('done!\nmodel weights were not found, downloading them...'):
             os.system(decoder_url)
-	
-	with zipfile.ZipFile(path, 'r') as zip_ref:
-            zip_ref.extractall('./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
+            with zipfile.ZipFile(path, 'r') as zip_ref:
+              zip_ref.extractall('./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
 
 	
 if uploaded_file is not None:
