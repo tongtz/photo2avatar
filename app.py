@@ -1,7 +1,9 @@
 import streamlit as st
 from numpy import load
 from numpy import expand_dims
+import PIL
 from PIL import Image
+from IPython.display import Image
 import os
 import zipfile
 import cv2
@@ -40,34 +42,22 @@ def download_checkpoint():
 	
 if uploaded_file is not None:
     download_checkpoint()
-	
-    # src_image = load_image(uploaded_file)
-    img = Image.open(uploaded_file)	
-	
-    img = np.array(img)
-    # img = torch.from_numpy(img).type(torch.FloatTensor) 
+    img = PIL.Image.open(uploaded_file).convert("RGB")
+    img = np.array(img) 
     pre = preprocess.Preprocess()
-
     # face alignment and segmentation
     face_rgba = pre.process(img)
-    if face_rgba is not None:
-    # change background to white
-      face = face_rgba[:,:,:3].copy()
-      mask = face_rgba[:,:,3].copy()[:,:,np.newaxis]/255.
-      face_white_bg = (face*mask + (1-mask)*255).astype(np.uint8)
-      face_white_bg = cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR)
-      cv2.imwrite(os.path.join('./dataset/sample/testA','.png'), cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR))
+    face = face_rgba[:,:,:3].copy()
+    mask = face_rgba[:,:,3].copy()[:,:,np.newaxis]/255.
+    face_white_bg = (face*mask + (1-mask)*255).astype(np.uint8)
+    cv2.imwrite('./dataset/sample/testA/0000.png', cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR))
 
-
-    subprocess.run([f"{sys.executable}", "main.py --dataset sample --phase test"])
+    subprocess.run([f"{sys.executable}","--dataset sample --phase test", "main.py"])
 	
-	
+    img_uploaded = Image(uploaded_file)
     img_processed = Image(filename="./dataset/sample/testA/0000.png")
     output = Image(filename="./results/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing/0000.png")
 	
-    st.image(uploaded_file, caption='Input Image', use_column_width=True)
-    #st.write(os.listdir())
+    st.image(img_uploaded, caption='Input Image', use_column_width=True)
     st.image(img_processed, caption='Processed Image', use_column_width=True) 
     st.image(output, caption='Avatar', use_column_width=True) 
-	
-	
