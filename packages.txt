@@ -2,3 +2,9 @@ freeglut3-dev
 libgtk2.0-dev
 libgl1-mesa-glx
 
+build-essential
+libboost-all-dev
+cmake
+libopenblas-dev
+
+
