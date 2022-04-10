@@ -9,7 +9,7 @@ import numpy as np
 import preprocessing
 from preprocessing import preprocess
 import UGATIT
-import urllib.request as request
+import urllib.request
 
 
 st.header("Photo to Avatar")
