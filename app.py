@@ -12,7 +12,8 @@ import UGATIT
 import urllib.request
 import dlib
 import tensorflow as tf
-import argparse as args
+import argparse
+import sys
 
 st.header("Photo to Avatar")
 st.write("Choose any image and get corresponding avatar:")
@@ -58,13 +59,8 @@ if uploaded_file is not None:
       face_white_bg = cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR)
       cv2.imwrite(os.path.join('./dataset/sample/testA','.png'), cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR))
 
-    with tf.Session(config=tf.ConfigProto(allow_soft_placement=True)) as sess:
-      gan = UGATIT(sess, args)
-      # build graph
-      gan.build_model()
-      # show network architecture
-      show_all_variables()
-      gan.test()
+
+    subprocess.run([f"{sys.executable}", "main.py --dataset sample --phase test"])
 	
 	
     img_processed = Image(filename="./dataset/sample/testA/0000.png")
