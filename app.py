@@ -19,7 +19,7 @@ uploaded_file = st.file_uploader("Choose an image...")
 # newImg.save(out_f)
 
 if uploaded_file is not None:
-    download_checkpoint():
+    download_checkpoint()
 	
     #src_image = load_image(uploaded_file)
     image = Image.open(uploaded_file)	
