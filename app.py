@@ -18,6 +18,22 @@ uploaded_file = st.file_uploader("Choose an image...")
 
 # newImg.save(out_f)
 
+
+@st.cache
+def download_checkpoint():
+    
+    path = './checkpoint/temp'
+	
+    if not os.path.exists(path):
+        decoder_url = 'wget -O ./checkpoint/temp https://www.dropbox.com/sh/vcjbug70bi7zxdx/AABjCb-1StRWmd1ugqfbfj5Ua?dl=0'
+        
+        with st.spinner('done!\nmodel weights were not found, downloading them...'):
+            os.system(decoder_url)
+	
+    with zipfile.ZipFile(path, 'r') as zip_ref:
+        zip_ref.extractall('./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
+
+	
 if uploaded_file is not None:
     download_checkpoint()
 	
@@ -56,16 +72,3 @@ if uploaded_file is not None:
     st.image(output, caption='Avatar', use_column_width=True) 
 	
 	
-@st.cache
-def download_checkpoint():
-    
-    path = './checkpoint/temp'
-	
-    if not os.path.exists(path):
-        decoder_url = 'wget -O ./checkpoint/temp https://www.dropbox.com/sh/vcjbug70bi7zxdx/AABjCb-1StRWmd1ugqfbfj5Ua?dl=0'
-        
-        with st.spinner('done!\nmodel weights were not found, downloading them...'):
-            os.system(decoder_url)
-	
-    with zipfile.ZipFile(path, 'r') as zip_ref:
-        zip_ref.extractall('./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
