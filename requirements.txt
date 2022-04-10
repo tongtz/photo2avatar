@@ -10,5 +10,4 @@ Pillow==7.1.2
 tensorboard==1.15.0
 tensorflow==1.15.0
 
-opencv-python
 opencv-python-headless
