@@ -21,8 +21,8 @@ uploaded_file = st.file_uploader("Choose an image...")
 if uploaded_file is not None:
     download_checkpoint()
 	
-    #src_image = load_image(uploaded_file)
-    image = Image.open(uploaded_file)	
+    # src_image = load_image(uploaded_file)
+    img = Image.open(uploaded_file)	
 	
     # img = np.array(img)
     # img = torch.from_numpy(img).type(torch.FloatTensor) 
@@ -31,20 +31,20 @@ if uploaded_file is not None:
     # face alignment and segmentation
     face_rgba = pre.process(img)
     if face_rgba is not None:
-	# change background to white
-	face = face_rgba[:,:,:3].copy()
-	mask = face_rgba[:,:,3].copy()[:,:,np.newaxis]/255.
-	face_white_bg = (face*mask + (1-mask)*255).astype(np.uint8)
-	face_white_bg = cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR)
-	cv2.imwrite(os.path.join('./dataset/sample/testA','.png'), cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR))
+    # change background to white
+      face = face_rgba[:,:,:3].copy()
+      mask = face_rgba[:,:,3].copy()[:,:,np.newaxis]/255.
+      face_white_bg = (face*mask + (1-mask)*255).astype(np.uint8)
+      face_white_bg = cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR)
+      cv2.imwrite(os.path.join('./dataset/sample/testA','.png'), cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR))
 
     with tf.Session(config=tf.ConfigProto(allow_soft_placement=True)) as sess:
-	gan = UGATIT(sess, args)
-	# build graph
-	gan.build_model()
-	# show network architecture
-	show_all_variables()
-	gan.test()
+      gan = UGATIT(sess, args)
+      # build graph
+      gan.build_model()
+      # show network architecture
+      show_all_variables()
+      gan.test()
 	
 	
     img_processed = Image(filename="./dataset/sample/testA/0000.png")
@@ -67,5 +67,5 @@ def download_checkpoint():
         with st.spinner('done!\nmodel weights were not found, downloading them...'):
             os.system(decoder_url)
 	
-	with zipfile.ZipFile(path, 'r') as zip_ref:
-	    zip_ref.extractall('./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
+    with zipfile.ZipFile(path, 'r') as zip_ref:
+        zip_ref.extractall('./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
