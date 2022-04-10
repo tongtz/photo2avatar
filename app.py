@@ -1,114 +1,71 @@
 import streamlit as st
 from numpy import load
 from numpy import expand_dims
-from matplotlib import pyplot
-from PIL import Image, ImageDraw, ImageFont
-import numpy as np
+from PIL import Image
 import os
+import zipfile
+import cv2
+import numpy as np
+import preprocessing
+from preprocessing import preprocess
+import UGATIT
+
 
 st.header("Photo to Avatar")
 st.write("Choose any image and get corresponding avatar:")
 
 uploaded_file = st.file_uploader("Choose an image...")
 
-def asciiart(in_f, SC, GCF,  out_f, color1='black', color2='blue', bgcolor='white'):
-
-    # The array of ascii symbols from white to black
-    chars = np.asarray(list(' .,:irs?@9B&#'))
-
-    # Load the fonts and then get the the height and width of a typical symbol 
-    # You can use different fonts here
-    font = ImageFont.load_default()
-    letter_width = font.getsize("x")[0]
-    letter_height = font.getsize("x")[1]
-
-    WCF = letter_height/letter_width
-
-    #open the input file
-    img = Image.open(in_f)
-
-
-    #Based on the desired output image size, calculate how many ascii letters are needed on the width and height
-    widthByLetter=round(img.size[0]*SC*WCF)
-    heightByLetter = round(img.size[1]*SC)
-    S = (widthByLetter, heightByLetter)
-
-    #Resize the image based on the symbol width and height
-    img = img.resize(S)
-    
-    #Get the RGB color values of each sampled pixel point and convert them to graycolor using the average method.
-    # Refer to https://www.johndcook.com/blog/2009/08/24/algorithms-convert-color-grayscale/ to know about the algorithm
-    img = np.sum(np.asarray(img), axis=2)
-    
-    # Normalize the results, enhance and reduce the brightness contrast. 
-    # Map grayscale values to bins of symbols
-    img -= img.min()
-    img = (1.0 - img/img.max())**GCF*(chars.size-1)
-    
-    # Generate the ascii art symbols 
-    lines = ("\n".join( ("".join(r) for r in chars[img.astype(int)]) )).split("\n")
-
-    # Create gradient color bins
-    nbins = len(lines)
-    #colorRange =list(Color(color1).range_to(Color(color2), nbins))
-
-    #Create an image object, set its width and height
-    newImg_width= letter_width *widthByLetter
-    newImg_height = letter_height * heightByLetter
-    newImg = Image.new("RGBA", (newImg_width, newImg_height), bgcolor)
-    draw = ImageDraw.Draw(newImg)
-
-    # Print symbols to image
-    leftpadding=0
-    y = 0
-    lineIdx=0
-    for line in lines:
-        color = 'blue'
-        lineIdx +=1
-
-        draw.text((leftpadding, y), line, '#0000FF', font=font)
-        y += letter_height
-
-    # Save the image file
-
-    #out_f = out_f.resize((1280,720))
-    newImg.save(out_f)
-
-
-def load_image(filename, size=(512,512)):
-	# load image with the preferred size
-	pixels = load_img(filename, target_size=size)
-	# convert to numpy array
-	pixels = img_to_array(pixels)
-	# scale from [0,255] to [-1,1]
-	pixels = (pixels - 127.5) / 127.5
-	# reshape to 1 sample
-	pixels = expand_dims(pixels, 0)
-	return pixels
-
-
-def imgGen2(img1):
-  inputf = img1  # Input image file name
-
-  SC = 0.1    # pixel sampling rate in width
-  GCF= 2      # contrast adjustment
-
-  asciiart(inputf, SC, GCF, "results.png")   #default color, black to blue
-  asciiart(inputf, SC, GCF, "results_pink.png","blue","pink")
-  img = Image.open(img1)
-  img2 = Image.open('results.png').resize(img.size)
-  #img2.save('result.png')
-  #img3 = Image.open('results_pink.png').resize(img.size)
-  #img3.save('resultp.png')
-  return img2	
-
+# newImg.save(out_f)
 
 if uploaded_file is not None:
+    download_checkpoint():
+	
     #src_image = load_image(uploaded_file)
     image = Image.open(uploaded_file)	
 	
+    # img = np.array(img)
+    # img = torch.from_numpy(img).type(torch.FloatTensor) 
+    pre = preprocess.Preprocess()
+
+    # face alignment and segmentation
+    face_rgba = pre.process(img)
+    if face_rgba is not None:
+	# change background to white
+	face = face_rgba[:,:,:3].copy()
+	mask = face_rgba[:,:,3].copy()[:,:,np.newaxis]/255.
+	face_white_bg = (face*mask + (1-mask)*255).astype(np.uint8)
+	face_white_bg = cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR)
+	cv2.imwrite(os.path.join('./dataset/sample/testA','.png'), cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR))
+
+    with tf.Session(config=tf.ConfigProto(allow_soft_placement=True)) as sess:
+	gan = UGATIT(sess, args)
+	# build graph
+	gan.build_model()
+	# show network architecture
+	show_all_variables()
+	gan.test()
+	
+	
+    img_processed = Image(filename="./dataset/sample/testA/0000.png")
+    output = Image(filename="./results/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing/0000.png")
+	
     st.image(uploaded_file, caption='Input Image', use_column_width=True)
     #st.write(os.listdir())
-    im = imgGen2(uploaded_file)	
-    st.image(im, caption='ASCII art', use_column_width=True) 	
+    st.image(img_processed, caption='Processed Image', use_column_width=True) 
+    st.image(output, caption='Avatar', use_column_width=True) 
+	
+	
+@st.cache
+def download_checkpoint():
     
+    path = './checkpoint/temp'
+	
+    if not os.path.exists(path):
+        decoder_url = 'wget -O ./checkpoint/temp https://www.dropbox.com/sh/vcjbug70bi7zxdx/AABjCb-1StRWmd1ugqfbfj5Ua?dl=0'
+        
+        with st.spinner('done!\nmodel weights were not found, downloading them...'):
+            os.system(decoder_url)
+	
+	with zipfile.ZipFile(path, 'r') as zip_ref:
+	    zip_ref.extractall('./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
