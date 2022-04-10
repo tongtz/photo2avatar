@@ -25,7 +25,7 @@ def download_checkpoint():
     path = './checkpoint/temp'
 	
     if not os.path.exists(path):
-        decoder_url = 'wget -O ./checkpoint/temp https://www.dropbox.com/sh/vcjbug70bi7zxdx/AABjCb-1StRWmd1ugqfbfj5Ua?dl=0'
+        decoder_url = 'wget -O ./checkpoint/temp https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0'
         
         with st.spinner('done!\nmodel weights were not found, downloading them...'):
             os.system(decoder_url)
