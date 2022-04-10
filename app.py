@@ -9,6 +9,7 @@ import numpy as np
 import preprocessing
 from preprocessing import preprocess
 import UGATIT
+import urllib.request as request
 
 
 st.header("Photo to Avatar")
@@ -24,7 +25,6 @@ def download_checkpoint():
     path = './checkpoint/temp'
 	
     if not os.path.exists(path):
-        import urllib.request
 
         url = 'https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0'
 
