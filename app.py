@@ -33,12 +33,10 @@ def download_checkpoint():
         url = 'https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0'
 
         urllib.request.urlretrieve(url, './checkpoint/temp')
-        
-        with st.spinner('done!\nmodel weights were not found, downloading them...'):
-            os.system(decoder_url)
+  
+        with zipfile.ZipFile(path, 'r') as zip_ref:
+          zip_ref.extractall('./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
 	
-            with zipfile.ZipFile(path, 'r') as zip_ref:
-              zip_ref.extractall('./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
 	
 if uploaded_file is not None:
     download_checkpoint()
