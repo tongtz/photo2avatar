@@ -21,14 +21,20 @@ uploaded_file = st.file_uploader("Choose an image...")
 
 @st.cache
 def download_checkpoint():
+os.chdir(r'C:\Folder')
     
     path = './checkpoint/temp'
 	
     if not os.path.exists(path):
-        decoder_url = 'wget -O ./checkpoint/temp https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0'
+        import urllib.request
+
+	url = 'https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0'
+
+	urllib.request.urlretrieve(url, './checkpoint/temp')
         
         with st.spinner('done!\nmodel weights were not found, downloading them...'):
             os.system(decoder_url)
+	
             with zipfile.ZipFile(path, 'r') as zip_ref:
               zip_ref.extractall('./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
 
