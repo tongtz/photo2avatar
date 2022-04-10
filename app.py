@@ -12,6 +12,7 @@ import UGATIT
 import urllib.request
 import dlib
 import tensorflow as tf
+import argparse
 
 st.header("Photo to Avatar")
 st.write("Choose any image and get corresponding avatar:")
