@@ -10,7 +10,7 @@ import preprocessing
 from preprocessing import preprocess
 import UGATIT
 import urllib.request
-
+import dlib
 
 st.header("Photo to Avatar")
 st.write("Choose any image and get corresponding avatar:")
