@@ -13,6 +13,7 @@ import urllib.request
 import dlib
 import tensorflow as tf
 import argparse
+import subprocess
 import sys
 
 st.header("Photo to Avatar")
