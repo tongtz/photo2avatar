@@ -11,6 +11,7 @@ from preprocessing import preprocess
 import UGATIT
 import urllib.request
 import dlib
+import tensorflow as tf
 
 st.header("Photo to Avatar")
 st.write("Choose any image and get corresponding avatar:")
