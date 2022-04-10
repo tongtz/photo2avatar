@@ -42,7 +42,7 @@ if uploaded_file is not None:
     # src_image = load_image(uploaded_file)
     img = Image.open(uploaded_file)	
 	
-    # img = np.array(img)
+    img = np.array(img)
     # img = torch.from_numpy(img).type(torch.FloatTensor) 
     pre = preprocess.Preprocess()
 
