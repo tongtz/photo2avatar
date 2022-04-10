@@ -19,7 +19,7 @@ uploaded_file = st.file_uploader("Choose an image...")
 
 # newImg.save(out_f)
 
-@st.cache
+# @st.cache
 def download_checkpoint():
     
     path = './checkpoint/temp'
