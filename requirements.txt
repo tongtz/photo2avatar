@@ -3,7 +3,7 @@ numpy==1.20.3
 tensorflow==1.15.0
 torch==1.11.0
 tqdm==4.62.3
-freeglut3-dev
-libgtk2.0-dev
+# freeglut3-dev
+# libgtk2.0-dev
 libgl1-mesa-glx
 opencv-python--headless
