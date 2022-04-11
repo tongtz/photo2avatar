@@ -4,7 +4,7 @@ numpy==1.20.3
 tensorflow-gpu==1.14
 torch==1.11.0
 tqdm==4.62.3
-opencv-python--headless
+opencv-python--headless==4.1.2.30
 cmake
 dlib-bin
 wget
