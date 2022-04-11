@@ -40,8 +40,8 @@ def download_checkpoint():
   
         with zipfile.ZipFile(path, 'r') as zip_ref:
           zip_ref.extractall('./checkpoint')
-	
-	os.rename('./checkpoint/UGATIT_selfie2anime_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing','./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
+        
+        os.rename('./checkpoint/UGATIT_selfie2anime_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing','./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
 	
 if uploaded_file is not None:
     download_checkpoint()
