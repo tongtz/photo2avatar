@@ -6,6 +6,5 @@ build-essential
 libboost-all-dev
 cmake
 libopenblas-dev
-
 wget
 
