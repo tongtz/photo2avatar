@@ -52,7 +52,7 @@ if uploaded_file is not None:
     face_white_bg = (face*mask + (1-mask)*255).astype(np.uint8)
     cv2.imwrite('./dataset/sample/testA/0000.png', cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR))
 
-    subprocess.run([f"{sys.executable}","--dataset sample --phase test", "main.py"])
+    subprocess.run([f"{sys.executable}", "main.py"])
 	
     img_uploaded = Image(uploaded_file)
     img_processed = Image(filename="./dataset/sample/testA/0000.png")
