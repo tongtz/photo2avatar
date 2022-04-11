@@ -89,7 +89,6 @@ def main():
 
     # open session
     with tf.Session(config=tf.ConfigProto(allow_soft_placement=True)) as sess:
-        config.graph_options.optimizer_options.global_jit_level = tf.OptimizerOptions.ON_1
         gan = UGATIT(sess, args)
 
         # build graph
