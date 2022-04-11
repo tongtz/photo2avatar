@@ -7,3 +7,4 @@ tqdm==4.62.3
 opencv-python--headless
 cmake
 dlib-bin
+wget
