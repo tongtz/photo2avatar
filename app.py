@@ -17,6 +17,7 @@ import tensorflow as tf
 import argparse
 import subprocess
 import sys
+import wget
 
 st.header("Photo to Avatar")
 st.write("Choose any image and get corresponding avatar:")
@@ -25,20 +26,22 @@ uploaded_file = st.file_uploader("Choose an image...")
 
 # newImg.save(out_f)
 
-# @st.cache
+@st.cache
 def download_checkpoint():
     
     path = './checkpoint/temp'
 	
     if not os.path.exists(path):
 
-        url = 'https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0'
-
-        urllib.request.urlretrieve(url, './checkpoint/temp')
+        decoder_url = 'wget -O ./checkpoint/temp https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0'
+        
+        with st.spinner('done!\nmodel weights were not found, downloading them...'):
+            os.system(decoder_url)
   
         with zipfile.ZipFile(path, 'r') as zip_ref:
-          zip_ref.extractall('./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
+          zip_ref.extractall('./checkpoint')
 	
+	os.rename('./checkpoint/UGATIT_selfie2anime_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing','./checkpoint/UGATIT_sample_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')
 	
 if uploaded_file is not None:
     download_checkpoint()
