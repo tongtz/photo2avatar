@@ -35,7 +35,7 @@ def download_checkpoint():
 
         decoder_url = 'wget -O ./checkpoint/temp https://www.dropbox.com/sh/63xqqqef0jtevmg/AADN7izdFHxueUbTSRBZrpffa?dl=0'
         
-        with st.spinner('done!\nmodel weights were not found, downloading them...'):
+        with st.spinner('downloading pretrained model...'):
             os.system(decoder_url)
   
         with zipfile.ZipFile(path, 'r') as zip_ref:
@@ -55,7 +55,7 @@ if uploaded_file is not None:
     face_white_bg = (face*mask + (1-mask)*255).astype(np.uint8)
     cv2.imwrite('./dataset/sample/testA/0000.png', cv2.cvtColor(face_white_bg, cv2.COLOR_RGB2BGR))
 	
-    with st.spinner('Wait for it...'):
+    with st.spinner('Wait for modeling...'):
       subprocess.run([f"{sys.executable}", "main.py"])
 	
     img_uploaded = Image(uploaded_file)
