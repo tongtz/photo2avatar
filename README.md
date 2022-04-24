@@ -62,7 +62,7 @@ If the memory of gpu is **not sufficient**, set `--light` to **True**. But it ma
 There are a variety of different parameters that can also be passed in. They can be found at the top of `main.py`; however I've pasted a couple important ones below
 
 ```python
-parser.add_argument('--phase',      default='train',        help='[train / test]')
+parser.add_argument('--phase',      default='test',        help='[train / test]')
 parser.add_argument('--light',      default=False,          help='[full version / light version]')
 parser.add_argument('--dataset',    default='sample',       help='dataset_name')
 parser.add_argument('--epoch',      default=100,            help='The number of epochs to run')
