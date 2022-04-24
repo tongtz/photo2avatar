@@ -75,10 +75,10 @@ if uploaded_file is not None:
     # st.write("Show output of ML run:")
     # st.text(capture)
 
-    st.markdown("""---""")
-    st.write("Show all local ML related files:")
-    st.table(get_local_files())
-    st.markdown("""---""")
+    # st.markdown("""---""")
+    # st.write("Show all local ML related files:")
+    # st.table(get_local_files())
+    # st.markdown("""---""")
 
     try:
         img_uploaded = PIL.Image.open(uploaded_file)
