@@ -115,8 +115,8 @@ python main.py --dataset YOUR_DATASET_NAME --phase test
 ### Colab Example
 Open and run the Jupyter Notebook: ```Test.ipynb```
 
-### Deployment application
-* Run and execute the streamlit app for applications demo: ```streamlit run app.py```
+### Deployment
+* Run and execute the streamlit app locally for applications demo: ```streamlit run app.py```
 * Access to the public application: https://module2-344218.uc.r.appspot.com/
 
 ## 4. Tips
