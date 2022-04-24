@@ -2,5 +2,11 @@ runtime: custom
 env: flex
 
 # Lock instances to 1
-manual_scaling:
-  instances: 1
+resources:
+  cpu: 6
+  memory_gb: 30
+  disk_size_gb: 30
+  volumes:
+  - name: ramdisk1
+    volume_type: tmpfs
+    size_gb: 15
