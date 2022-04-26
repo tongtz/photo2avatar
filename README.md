@@ -1,16 +1,19 @@
 # photo2avatar
-Theme: Entertainment and the arts
-Objective: Turn photos into a cartoon avatar
+* Theme: Entertainment and the arts
+* Objective: Turn photos into a cartoon avatar
 
 ## 1. Project Description
-* Novelty:  
-* Limit & Futher Work: 
-* Why there is no non-deep learning model:
+### Novelty
+* Instead of CycleGAN, a classic unpaired image translation method which has obvious artifacts and are unstable, implement a more stable UGATIT model (204 epochs); 
+* Pre-processed the data to a fixed pattern to help reduce the difficulty of optimization.
+### Limit & Futher Work
+* The model doesn’t perform well on Asian female photos -> include more Asian female photos in the training dataset
+* The model is not stable; sometimes it does not output a satisfactory result -> enlarge and diversify the training dataset  
 
-## 2. Model Structure
+### Why there is no non-deep learning model?
 
 
-## 3. How to run?
+## 2. How to run?
 
 ### Setup
 
@@ -24,8 +27,14 @@ pip3 install -r requirements.txt
 * Selfie Dataset - https://www.crcv.ucf.edu/data/Selfie
 * Avatar Dataset - https://www.gwern.net/Danbooru2021
 
-* You can also download a dataset [sample](https://drive.google.com/file/d/1xOWj1UVgp6NKMT3HbPhBbtq2A4EDkghF/view) to train and test the model.
+* You can also download a dataset [sample](https://drive.google.com/file/d/1xOWj1UVgp6NKMT3HbPhBbtq2A4EDkghF/view) or use your own dataset to train and test the model.
 
+### Pre-process data
+Please pre-process photos by following command:
+
+```python
+python data_process.py --data_path YourPhotoFolderPath --save_path YourSaveFolderPath
+```
 
 ### Dataset Structure
 The datasets you decide to use should be put into the dataset folder of the project and follow the below structure: 
@@ -50,6 +59,7 @@ The datasets you decide to use should be put into the dataset folder of the proj
            ├── ddd.png
            └── ...
 ```
+
 
 ### Train
 
@@ -119,10 +129,10 @@ Open and run the Jupyter Notebook: ```Test.ipynb```
 * Run and execute the streamlit app locally for applications demo: ```streamlit run app.py```
 * Access to the public application: https://module2-344218.uc.r.appspot.com/
 
-## 4. Tips
+## 3. Tips
 * For the errors ```No module named 'tensorflow.contrib'```, it is because version 2.0 of Tensorflow isn't supported, you might need to ```pip uninstall tensorflow==2.8.0``` and then ```pip install tensorflow-gpu==1.14``` or ```pip install tensorflow==1.15.0```
     
-## 5. Code and Paper References
+## 4. Code and Paper References
 * U-GAT-IT: Unsupervised Generative Attentional Networks with Adaptive Layer-Instance Normalization for Image-to-Image Translation [Paper](https://arxiv.org/abs/1907.10830) | [Code](https://github.com/taki0112/UGATIT)
 * Minivision's photo-to-cartoon translation project [Code](https://github.com/minivision-ai/photo2cartoon/blob/master/README_EN.md)
 
