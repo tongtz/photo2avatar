@@ -1,6 +1,6 @@
 # photo2avatar
-* Theme: Entertainment and the arts
-* Objective: Turn photos into a cartoon avatar
+Theme: Entertainment and the arts
+Objective: Turn photos into a cartoon avatar
 
 ## 1. Project Description
 * Novelty:  
