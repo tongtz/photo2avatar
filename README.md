@@ -11,7 +11,7 @@
 * The model is not stable; sometimes it does not output a satisfactory result -> enlarge and diversify the training dataset  
 
 ### Why there is no non-deep learning model?
-
+In traditional machine learning models, we have supervised learning and unsupervised learning. In our case, as we do not have any label and it does not simply discover patterns and information to group data points, we have to turn to the more complex deep learning models to learn the features and create new images based on the knowledge learned in network layers. 
 
 ## 2. How to run?
 
