@@ -1,6 +1,7 @@
 # photo2avatar
 * Theme: Entertainment and the arts
 * Objective: Turn photos into a cartoon avatar
+* For more detailed description and explaination, please refer to: [presentation PPT](https://github.com/tongtz/photo2avatar/blob/main/presentation.pdf)
 
 ## 1. Project Description
 ### Novelty
